@@ -1,0 +1,243 @@
+/* Base Styles */
+body {
+  margin: 0;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  background-color: #f9f0ff;
+  color: #333;
+}
+
+.app-container {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+h1 {
+  color: #ff6b9d;
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Form Styles */
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.form input {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.8rem;
+  border: 2px solid #e0c8f5;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.form button {
+  background-color: #9c64ff;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form button:hover {
+  background-color: #7e3ff2;
+  transform: translateY(-2px);
+}
+
+/* Reminders List */
+.reminders {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: rotateY(5deg) scale(1.02);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.card.today {
+  animation: glow 2s infinite alternate;
+  border-left: 5px solid gold;
+}
+
+.card-content h2 {
+  margin: 0;
+  color: #6a3093;
+}
+
+.card-content p {
+  margin: 0.5rem 0 0;
+  color: #666;
+}
+
+.delete-btn {
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.delete-btn:hover {
+  background: #ff3b3b;
+  transform: scale(1.1);
+}
+
+/* Balloons */
+.balloons {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  top: 0;
+  left: 0;
+}
+
+.balloon {
+  position: absolute;
+  width: 40px;
+  height: 50px;
+  border-radius: 50%;
+  opacity: 0.7;
+  animation: float var(--duration) infinite linear;
+  transform: translateY(100vh);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  --duration: 15s;
+}
+
+.balloon:hover {
+  transform: translateY(-5px) scale(1.1);
+}
+
+.balloon:active {
+  animation: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+@keyframes float {
+  0% { transform: translateY(100vh) scale(0.8); }
+  100% { transform: translateY(-20vh) scale(1.2); }
+}
+
+/* Celebration Modal */
+.celebration-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s;
+}
+
+.celebration-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+  max-width: 80%;
+  animation: bounceIn 0.5s;
+}
+
+.celebration-content h2 {
+  color: #ff4081;
+  margin-bottom: 1.5rem;
+}
+
+.celebration-content button {
+  background: #9c64ff;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.celebration-content button:hover {
+  background: #7e3ff2;
+}
+
+/* Animations */
+@keyframes glow {
+  from {
+    box-shadow: 0 0 5px gold;
+  }
+  to {
+    box-shadow: 0 0 20px gold;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0.8); opacity: 0; }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .form {
+    flex-direction: column;
+  }
+  
+  .form input, .form button {
+    width: 100%;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+}
