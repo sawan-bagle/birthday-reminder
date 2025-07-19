@@ -11,12 +11,12 @@ function App() {
     return saved ? JSON.parse(saved) : [];
   });
 
-  // Save reminders to localStorage
+  // savinig reminders (dates that are filled or submitted till yet) to local storage
   useEffect(() => {
     localStorage.setItem("reminders", JSON.stringify(reminders));
   }, [reminders]);
 
-  // Check for birthdays
+  // Birthdays-checking
   useEffect(() => {
     const today = new Date().toISOString().slice(5, 10); // MM-DD
     reminders.forEach((r) => {
